@@ -1,5 +1,5 @@
 import { NextAuthOptions } from "next-auth";
-import credentials, { CredentialsProvider } from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import dbConnect from "@/lib/dbConnect";
 import UserModel from "@/model/User";
@@ -70,5 +70,6 @@ export const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
+    secret: process.env.NEXTAUTH_SECRET,
 }
 
