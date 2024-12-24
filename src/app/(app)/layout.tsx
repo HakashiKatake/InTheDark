@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
-import AuthProvider from '../context/AuthProvider';
+import AuthProvider from '../../context/AuthProvider';
 import { Toaster } from '@/components/ui/toaster';
 
 
