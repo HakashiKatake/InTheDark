@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+
 import axios, { AxiosError } from 'axios';
 import dayjs from 'dayjs';
 import { X } from 'lucide-react';
@@ -24,32 +24,22 @@ import { ApiResponse } from '@/types/ApiResponse';
 type MessageCardProps = {
   message: Message;
   onMessageDelete: (messageId: string) => void;
-};
+}
 
-export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
+
+export const MessageCard = ({ message, onMessageDelete }: MessageCardProps) => {
   const { toast } = useToast();
 
   const handleDeleteConfirm = async () => {
-    try {
-      const response = await axios.delete<ApiResponse>(
+    
+    const response = await axios.delete<ApiResponse>(
         `/api/delete-message/${message._id}`
-      );
-      toast({
+    );
+    toast({
         title: response.data.message,
       });
       onMessageDelete(message._id);
-
-    } catch (error) {
-      const axiosError = error as AxiosError<ApiResponse>;
-      toast({
-        title: 'Error',
-        description:
-          axiosError.response?.data.message ?? 'Failed to delete message',
-        variant: 'destructive',
-      });
-    } 
   };
-
   return (
     <Card className="card-bordered">
       <CardHeader>
@@ -88,3 +78,4 @@ export function MessageCard({ message, onMessageDelete }: MessageCardProps) {
     </Card>
   );
 }
+
