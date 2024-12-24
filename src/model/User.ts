@@ -1,5 +1,5 @@
 import mongoose, {Schema, Document} from "mongoose";
-import { unique } from "next/dist/build/utils";
+
 
 export interface Message extends Document {
     content: string;
@@ -31,7 +31,7 @@ export interface User extends Document {
     
 }
 
-const UserSchema: Schema<User>  = new Schema({
+const UserSchema: Schema<User> = new Schema({
     username: {
         type: String,
         required:[true, "Username is required"],
